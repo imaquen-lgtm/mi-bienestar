@@ -1,0 +1,17 @@
+{
+  "name": "Mi Bienestar",
+  "short_name": "Bienestar",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fbf8f5",
+  "theme_color": "#f5e9e7",
+  "description": "Tu espacio personal para cuidar de ti.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

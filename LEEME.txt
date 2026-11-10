@@ -1,0 +1,15 @@
+MI BIENESTAR — primera versión instalable (PWA)
+
+CONTENIDO
+- index.html: aplicación
+- manifest.json: datos de instalación
+- sw.js: caché para uso sin conexión después de la primera visita
+- icon.svg: icono
+
+IMPORTANTE
+Para instalarla en Android debe estar publicada en una dirección HTTPS. Abrir el archivo HTML directamente no permite instalarla como PWA.
+Los datos se guardan localmente en el navegador de ese dispositivo. Usa Mis datos > Descargar copia de seguridad periódicamente.
+Esta primera versión no sincroniza datos entre dispositivos ni envía información a un servidor.
+
+PUBLICACIÓN
+Sube el contenido de esta carpeta a un hosting estático HTTPS (por ejemplo, un sitio estático). Luego abre la URL con Chrome en Android, toca ⋮ y elige "Instalar aplicación" o "Añadir a pantalla de inicio".

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5e9e7">
+<meta name="description" content="Tu espacio personal para cuidar de ti.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>Mi Bienestar</title>
+<style>
+:root{--rose:#b98291;--rose-dark:#865c69;--cream:#fbf8f5;--paper:#fffefd;--sage:#8c9d8b;--ink:#514747;--muted:#8c8080;--line:#eee4e1;--shadow:0 8px 28px #74565a12}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:15px system-ui,-apple-system,Segoe UI,sans-serif;padding-bottom:88px}
+header{background:#f5e9e7;padding:24px 20px 18px;border-radius:0 0 26px 26px}
+.kicker{font-size:10px;letter-spacing:2px;color:var(--rose-dark);font-weight:700}
+h1{font-family:Georgia,serif;font-weight:500;font-size:30px;margin:5px 0;color:#59494a}
+.sub{color:#856f70;font-size:13px;margin:0}
+main{max-width:680px;margin:auto;padding:16px}
+.nav{display:flex;gap:7px;overflow:auto;margin:2px 0 17px}
+.nav button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;color:#77696a;white-space:nowrap}
+.nav button.active{background:var(--rose-dark);color:white;border-color:var(--rose-dark)}
+h2{font:500 21px Georgia,serif;margin:12px 0}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;box-shadow:var(--shadow)}
+.card h3{font-size:14px;margin:0 0 12px;font-weight:650}
+label{display:block;font-size:12px;color:var(--muted);margin:10px 0 6px}
+input,textarea,select{width:100%;border:1px solid var(--line);border-radius:11px;padding:12px;background:#fff;color:var(--ink);font:inherit}
+textarea{min-height:78px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rangeval{float:right;color:var(--rose-dark);font-weight:700}
+input[type=range]{padding:0;accent-color:var(--rose);border:0}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.check{display:flex;gap:8px;align-items:center;font-size:13px;color:#665b5c}
+.check input{width:auto;accent-color:var(--rose)}
+button.primary{width:100%;border:0;background:var(--rose-dark);color:#fff;padding:14px;border-radius:13px;font-weight:650;font-size:14px;margin-top:8px}
+button.secondary{border:1px solid var(--line);background:#fff;color:var(--rose-dark);padding:10px 12px;border-radius:11px}
+.muted{color:var(--muted);font-size:12px;line-height:1.5}
+.metricgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.metric{background:#f8f0ee;border-radius:14px;padding:13px}
+.metric strong{display:block;font:23px Georgia,serif;color:var(--rose-dark);margin-top:4px}
+.entry{border-bottom:1px solid var(--line);padding:12px 0}
+.entry:last-child{border:0}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#fffefaee;backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:12px max(16px,env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom));text-align:center}
+.bottom span{font:italic 13px Georgia,serif;color:#947b7e}
+.hidden{display:none!important}
+@media(min-width:600px){header{padding-left:max(24px,calc((100vw - 640px)/2));padding-right:max(24px,calc((100vw - 640px)/2))}}
+</style>
+</head>
+<body>
+<header><div class="kicker">TU ESPACIO PERSONAL</div><h1>Mi Bienestar <span aria-hidden="true">✿</span></h1><p class="sub">Pequeños pasos, grandes cambios.</p></header>
+<main>
+<div class="nav" id="nav">
+<button class="active" data-tab="hoy">Hoy</button><button data-tab="historial">Historial</button><button data-tab="progreso">Progreso</button><button data-tab="ajustes">Mis datos</button>
+</div>
+<section id="hoy">
+<h2 id="todayTitle">Tu día, a tu ritmo</h2>
+<div class="card">
+<h3>Descanso e hidratación</h3>
+<div class="row"><div><label for="sleep">Horas de sueño</label><input id="sleep" type="number" min="0" max="24" step=".5" placeholder="Ej. 6.5"></div><div><label for="water">Agua (ml)</label><input id="water" type="number" min="0" max="6000" step="250" placeholder="Ej. 1500"></div></div>
+</div>
+<div class="card">
+<h3>Alimentación</h3><div class="checks">
+<label class="check"><input type="checkbox" id="breakfast"> Desayuno</label><label class="check"><input type="checkbox" id="lunch"> Almuerzo</label><label class="check"><input type="checkbox" id="snack"> Refrigerio</label><label class="check"><input type="checkbox" id="dinner"> Cena</label>
+</div>
+</div>
+<div class="card">
+<h3>Ánimo y energía</h3>
+<label for="mood">¿Cómo te sientes?</label><select id="mood"><option value="">Selecciona</option><option>Muy bien</option><option>Tranquila</option><option>Cansada</option><option>Estresada</option><option>Triste</option><option>Ansiosa</option></select>
+<label for="energy">Nivel de energía <span class="rangeval" id="energyVal">5/10</span></label><input id="energy" type="range" min="1" max="10" value="5">
+</div>
+<div class="card">
+<h3>Registro de síntomas</h3><div class="checks">
+<label class="check"><input type="checkbox" id="migraine"> Migraña/dolor de cabeza</label><label class="check"><input type="checkbox" id="knee"> Dolor de rodillas</label><label class="check"><input type="checkbox" id="breath"> Falta de aire al esfuerzo</label><label class="check"><input type="checkbox" id="other"> Otro malestar</label>
+</div><p class="muted">Este registro ayuda a observar patrones, pero no reemplaza una evaluación médica.</p>
+</div>
+<div class="card"><h3>Un espacio para ti</h3><label for="notes">¿Qué te gustaría recordar de hoy?</label><textarea id="notes" placeholder="Escribe libremente..."></textarea></div>
+<button class="primary" id="save">Guardar mi día</button>
+<p class="muted" id="saveMsg" role="status"></p>
+</section>
+<section id="historial" class="hidden"><h2>Mi historial</h2><div class="card"><label for="filterMonth">Filtrar por mes</label><input type="month" id="filterMonth"><div id="historyList"></div></div><button class="secondary" id="export">Exportar mis registros (JSON)</button></section>
+<section id="progreso" class="hidden"><h2>Mi progreso</h2><div class="metricgrid" id="metrics"></div><div class="card"><h3>Una mirada amable</h3><p class="muted" id="insight">Cuando registres varios días, aquí podrás observar tus tendencias. No buscamos perfección: buscamos conocerte mejor.</p></div></section>
+<section id="ajustes" class="hidden"><h2>Mis datos</h2><div class="card"><h3>Privacidad y respaldo</h3><p class="muted">Tus registros se guardan en el almacenamiento de este navegador, en este dispositivo. No se envían a un servidor. Si borras los datos del navegador o cambias de celular, podrías perderlos.</p><button class="secondary" id="backup">Descargar copia de seguridad</button><label for="restore">Restaurar copia de seguridad</label><input id="restore" type="file" accept="application/json"><p class="muted">Guarda periódicamente una copia en un lugar seguro.</p></div></section>
+</main>
+<div class="bottom"><span>Hecha con cariño, para aprender a cuidarte. ♡</span></div>
+<script>
+const $=id=>document.getElementById(id), keys=['sleep','water','breakfast','lunch','snack','dinner','mood','energy','migraine','knee','breath','other','notes'];
+const today=()=>new Date().toLocaleDateString('en-CA');
+let records=JSON.parse(localStorage.getItem('miBienestarRecords')||'{}');
+$('todayTitle').textContent=new Date().toLocaleDateString('es-PE',{weekday:'long',day:'numeric',month:'long'});
+$('energy').addEventListener('input',()=>$('energyVal').textContent=$('energy').value+'/10');
+function loadToday(){let r=records[today()]||{};keys.forEach(k=>{let el=$(k);if(el.type==='checkbox')el.checked=!!r[k];else el.value=r[k]??(k==='energy'?5:'')});$('energyVal').textContent=$('energy').value+'/10'}
+function save(){let r={};keys.forEach(k=>{let el=$(k);r[k]=el.type==='checkbox'?el.checked:el.value});records[today()]=r;localStorage.setItem('miBienestarRecords',JSON.stringify(records));$('saveMsg').textContent='Tu registro quedó guardado en este dispositivo. ♡';}
+$('save').onclick=save;loadToday();
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x===b));['hoy','historial','progreso','ajustes'].forEach(t=>$(t).classList.toggle('hidden',t!==b.dataset.tab));if(b.dataset.tab==='historial')renderHistory();if(b.dataset.tab==='progreso')renderProgress()});
+function renderHistory(){let month=$('filterMonth').value;let arr=Object.entries(records).filter(([d])=>!month||d.startsWith(month)).sort((a,b)=>b[0].localeCompare(a[0]));$('historyList').innerHTML=arr.length?arr.map(([d,r])=>`<div class="entry"><strong>${new Date(d+'T12:00:00').toLocaleDateString('es-PE',{day:'numeric',month:'long',year:'numeric'})}</strong><div class="muted">Sueño: ${r.sleep||'—'} h · Agua: ${r.water||'—'} ml · Ánimo: ${r.mood||'—'} · Energía: ${r.energy||'—'}/10</div><div class="muted">${[r.migraine&&'Migraña',r.knee&&'Rodillas',r.breath&&'Falta de aire'].filter(Boolean).join(' · ')||'Sin síntomas marcados'}</div>${r.notes?`<p>${escapeHtml(r.notes)}</p>`:''}</div>`).join(''):'<p class="muted">Todavía no hay registros para mostrar.</p>'}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('filterMonth').value=today().slice(0,7);$('filterMonth').onchange=renderHistory;
+function renderProgress(){let a=Object.values(records),n=a.length,avg=(k)=>{let v=a.map(x=>Number(x[k])).filter(x=>Number.isFinite(x)&&x>0);return v.length?(v.reduce((x,y)=>x+y,0)/v.length).toFixed(1):'—'};$('metrics').innerHTML=[['Días registrados',n],['Sueño promedio',avg('sleep')==='—'?'—':avg('sleep')+' h'],['Agua promedio',avg('water')==='—'?'—':avg('water')+' ml'],['Energía promedio',avg('energy')==='—'?'—':avg('energy')+'/10']].map(([a,b])=>`<div class="metric"><span class="muted">${a}</span><strong>${b}</strong></div>`).join('');$('insight').textContent=n<3?'Registra algunos días más para empezar a reconocer tendencias. Cada registro cuenta.':'Ya tienes '+n+' días registrados. Observa cómo se relacionan tu descanso, energía y síntomas; comparte cualquier preocupación persistente con un profesional de salud.'}
+function download(name,data){let blob=new Blob([data],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)}
+$('backup').onclick=()=>download('mi-bienestar-respaldo.json',JSON.stringify(records,null,2));$('export').onclick=()=>download('mi-bienestar-registros.json',JSON.stringify(records,null,2));
+$('restore').onchange=async e=>{try{let f=e.target.files[0],obj=JSON.parse(await f.text());if(!obj||typeof obj!=='object'||Array.isArray(obj))throw 0;records={...records,...obj};localStorage.setItem('miBienestarRecords',JSON.stringify(records));alert('Copia restaurada correctamente.');}catch{alert('No se pudo leer ese archivo de respaldo.')}};
+if('serviceWorker' in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script>
+</body></html>
